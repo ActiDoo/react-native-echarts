@@ -7,5 +7,15 @@ export default function renderChart(props) {
     document.getElementById('main').style.height = "${height}px";
     var myChart = echarts.init(document.getElementById('main'));
     myChart.setOption(${toString(props.option)});
+
+    function () {
+      if (WebViewBridge) {
+        WebViewBridge.onMessage = function (message) {
+          if (message && message.type == 'setOption') {
+            myChart.setOption(JSON.parse(message.data));
+          }
+        };
+      }
+    }()
   `
 }
