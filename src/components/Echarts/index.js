@@ -10,7 +10,7 @@ export default class App extends Component {
       //this.refs.chart.reload();
       this.refs.chart.sendToBridge({
         type: 'setOption',
-        data: JSON.stringify(nextProps.option);
+        data: JSON.stringify(nextProps.option)
       });
     }
   }
